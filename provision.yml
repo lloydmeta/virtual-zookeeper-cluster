@@ -37,7 +37,7 @@
   - name: ZooKeeper | Ensure zoo.conf is present
     template:
       src: "templates/zk/zoo.cfg"
-      dest: "{{zk_dir}}/conf"
+      dest: "{{zk_dir}}/conf/zoo.cfg"
   - name: ZooKeeper | Ensures data dir {{zk.dataDir}} exists
     file:
       path: "{{zk.dataDir}}"
@@ -45,6 +45,6 @@
   - name: ZooKeeper | Ensure myid is set to {{cluster_node_seq}} in {{zk.dataDir}}/myid
     template:
       src: "templates/zk/myid"
-      dest: "{{zk.dataDir}}"
+      dest: "{{zk.dataDir}}/myid"
   - name: ZooKeeper | Ensure the service is running
     shell: "{{zk_dir}}/bin/zkServer.sh restart"
